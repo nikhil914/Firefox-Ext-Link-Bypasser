@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Link Bypasser",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Skips the waiting steps on LinkShortX and similar shortlink pages, for Firefox desktop and Android.",
   "browser_specific_settings": {
     "gecko": {
