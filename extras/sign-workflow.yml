@@ -1,0 +1,43 @@
+# Signs the add-on with Mozilla (unlisted, not published on the store) and attaches
+# the signed .xpi to a GitHub release. Firefox for Android only installs signed add-ons.
+#
+# One-time setup: create AMO API keys at https://addons.mozilla.org/developers/addon/api/key/
+# and add them as repository secrets AMO_JWT_ISSUER and AMO_JWT_SECRET.
+# Then bump "version" in manifest.json and push a tag like v1.5.1 (or run this manually).
+name: Sign Firefox add-on
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sign:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Lint
+        run: npx --yes web-ext@10 lint --source-dir . --ignore-files ".github/**" "extras/**" "README.md"
+      - name: Sign (unlisted)
+        env:
+          WEB_EXT_API_KEY: ${{ secrets.AMO_JWT_ISSUER }}
+          WEB_EXT_API_SECRET: ${{ secrets.AMO_JWT_SECRET }}
+        run: |
+          npx --yes web-ext@10 sign --source-dir . --channel unlisted \
+            --artifacts-dir dist --ignore-files ".github/**" "extras/**" "README.md" "dist/**"
+      - name: Attach to release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.xpi
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: signed-xpi
+          path: dist/*.xpi

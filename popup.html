@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Bypasser</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            min-width: 220px;
+            margin: 0;
+            padding: 16px;
+            background: #fff;
+            color: #111;
+        }
+        h3 { margin: 0 0 4px; font-size: 18px; }
+        p { margin: 0 0 14px; font-size: 13px; color: #555; }
+        button {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            border: 0;
+            border-radius: 10px;
+            color: #fff;
+            background: #0a7d32;
+        }
+        button.off { background: #9a2a2a; }
+        .status { text-align: center; margin-top: 12px; font-weight: 600; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #1c1b22; color: #eee; }
+            p { color: #aaa; }
+        }
+    </style>
+</head>
+<body>
+    <h3>Link Bypasser</h3>
+    <p>Skips the waiting steps on LinkShortX links.</p>
+    <button id="toggleButton">Turn off</button>
+    <div class="status" id="statusText">Status: On</div>
+    <script src="popup.js"></script>
+</body>
+</html>

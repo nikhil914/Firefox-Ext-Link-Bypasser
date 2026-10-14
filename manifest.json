@@ -1,0 +1,53 @@
+{
+  "manifest_version": 2,
+  "name": "Link Bypasser",
+  "version": "1.5.0",
+  "description": "Skips the waiting steps on LinkShortX and similar shortlink pages, for Firefox desktop and Android.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "link-bypasser@nikhil914.github.io",
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    },
+    "gecko_android": {
+      "strict_min_version": "142.0"
+    }
+  },
+  "permissions": [
+    "storage"
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://dragontales.lat/*",
+        "https://hindisink.com/*",
+        "https://nanotech.org.in/*",
+        "https://softspoker.co.in/*",
+        "https://audioverse.org.in/*",
+        "https://linkshortx.in/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "browser_action": {
+    "default_title": "Link Bypasser",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  }
+}
