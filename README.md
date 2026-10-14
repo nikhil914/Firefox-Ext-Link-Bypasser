@@ -27,6 +27,10 @@ Tap the add-on in the Firefox menu to turn it off or on.
 
 ## Install on Firefox for Android
 
+**Quick install:** download the signed add-on
+[`signed/link_bypasser-1.5.0-signed.xpi`](https://github.com/nikhil914/Firefox-Ext-Link-Bypasser/raw/main/signed/link_bypasser-1.5.0-signed.xpi)
+on your phone and follow step 2 below.
+
 Firefox for Android only installs add-ons that Mozilla has signed. Signing as **unlisted** is free,
 automatic and does not publish the add-on on the store.
 
